@@ -13,14 +13,12 @@ public class FileSimilarity {
         Map<String, List<Long>> fileFingerprints = new HashMap<>();
         
         ArrayList<Thread> myThreads = new ArrayList<>();
-        //ArrayList<Thread> myThreads2 = new ArrayList<>();
         // Calculate the fingerprint for each file
         for (String path : args) {
             Thread myThread = new Thread(new FirstFileSum(path, fileFingerprints), path);
             myThreads.add(myThread);
             myThread.start();
-            //List<Long> fingerprint = fileSum(path);
-            //fileFingerprints.put(path, fingerprint);
+
         }
 
         for(Thread thread : myThreads){
